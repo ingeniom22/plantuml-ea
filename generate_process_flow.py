@@ -1,51 +1,49 @@
-apps_crud = frozenset({1, 2, 3})
-apps_x = frozenset({4, 5, 6})
-apps_y = frozenset({7, 8, 9})
-apps_z = frozenset({10, 11, 12})
+## List Apps
+data_management_apps = frozenset(['Aplikasi Servicedesk', 'Jabar Open Data (Landing Page Portal Data Jabar)', 'Login Data Pembangunan Jawa Barat', 'Login Executive Dashboard', 'Aplikasi Data Tidak Terstruktur', 'Web Open Data Jawa Barat', 'Sistem Repository Prov Jabar'])
+communication_apps = frozenset(['Website resmi Dinas Komunikasi dan Informatika', 'Website Resmi Pemerintah Provinsi Jawa Barat', 'Aplikasi e-Mail (Zimbra)', 'Forum terkait Covid-19'])
+logistics_apps = frozenset(['Logistik Alat Kesehatan'])
+mapping_apps = frozenset(['Web Satu Peta Jawa Barat', 'GIS Aset Tanah dan Bangunan'])
+dashboard_apps = frozenset(['Executive Dashboard', 'Kewilayahan Dashboard', 'Dashboard Monitoring Proyek Infrastruktur'])
+covid_related_apps = frozenset(['Web site Pikobar', 'Sistem Test masif Pikobar', 'Admin Test Masif Pikobar', 'Sistem Online Penerima Bantuan Bansos', 'Web Bansos Pikobar'])
+event_related_apps = frozenset(['Web site Event Jabar Prov'])
+community_service_apps = frozenset(['Sapawarga'])
+media_related_apps = frozenset(['web site KPID'])
+storage_apps = frozenset(['Drive Jabarprov'])
 
+## List Use Case 
 operations_crud = ["Create", "Read", "Update", "Delete"]
-operations_x = ["A", 'B']
-operations_y = ["C", "D"]
-operations_z = ["E", "F"]
+data_management_apps_usecases = ['Data entry', 'Data analysis', 'Data visualization', 'Data reporting', 'Data cleaning', 'Data integration', "Input Data", "Read Data", "Update Data", "Delete Data"]
+communication_apps_usecases = ['Internal communication', 'External communication', 'Email management', 'Forum discussion', 'Information dissemination']
+logistics_apps_usecases = ['Inventory management', 'Supply chain management', 'Delivery tracking', 'Order processing']
+mapping_apps_usecases = ['Geospatial analysis', 'Asset tracking', 'Route planning', 'Location-based service']
+dashboard_apps_usecases = ['Performance tracking', 'Real-time reporting', 'Data visualization', 'Decision making support']
+covid_related_apps_usecases = ['Covid-19 testing', 'Covid-19 case tracking', 'Covid-19 information dissemination', 'Social assistance distribution during Covid-19']
+event_related_apps_usecases = ['Event planning', 'Event promotion', 'Ticket sales', 'Event scheduling']
+community_service_apps_usecases = ['Community engagement', 'Public service delivery', 'Citizen feedback collection', 'Community information dissemination']
+media_related_apps_usecases = ['Media content management', 'Media content distribution', 'Media content creation', 'Media content analysis']
+storage_apps_usecases = ['File storage', 'File sharing', 'File backup', 'File synchronization']
 
 apps_ops_mappings = {
-    apps_crud: operations_crud,
-    apps_x: operations_x,
-    apps_y: operations_y,
-    apps_z: operations_z,
+    'data_management_apps': data_management_apps_usecases,
+    'communication_apps': communication_apps_usecases,
+    'logistics_apps': logistics_apps_usecases,
+    'mapping_apps': mapping_apps_usecases,
+    'dashboard_apps': dashboard_apps_usecases,
+    'covid_related_apps': covid_related_apps_usecases,
+    'event_related_apps': event_related_apps_usecases,
+    'community_service_apps': community_service_apps_usecases,
+    'media_related_apps': media_related_apps_usecases,
+    'storage_apps': storage_apps_usecases,
 }
 
-for apps, ops in apps_ops_mappings.items():
-    for app in apps:
+for apps_category, ops in apps_ops_mappings.items():
+    with open(f"{apps_category}.puml", "w") as file:
+        file.write(f"@startuml {apps_category}\n")
+        for app in eval(apps_category):
+            file.write(f":{app}: as {app.replace(' ', '')}\n")
         for op in ops:
-            print(app, op)
-            # # Define the PlantUML code for each combination
-            # plantuml_code = f"""
-            # @startuml
-            # start
-            # :User {op} {app[:-1]};
-            # :View;
-            # if (Valid Input?) then (yes)
-            # :Copntrappplleapp;
-            # if (Valid {op}?) then (yes)
-            #     :Model;
-            #     if ({app} {op} Successful?) then (yes)
-            #     :Update {op} Record;
-            #     else (no)
-            #     :Display Error Message;
-            #     endif
-            # else (no)
-            #     :Display Validation Error;
-            # endif
-            # else (no)
-            # :Display Error Message;
-            # endif
-            # stop
-            # @enduml
-            # """
-
-            # # Write the PlantUML code to a file
-            # with open(f"activities/activity_{app}_{op}.puml", "w") as file:
-            #     file.write(plantuml_code)
-
-print("Activity diagrams generated successfully.")
+            file.write(f"({op}) as ({op.replace(' ', '')})\n")
+        for app in eval(apps_category):
+            for op in ops:
+                file.write(f"{app.replace(' ', '')} --> ({op.replace(' ', '')})\n")
+        file.write("@enduml\n")

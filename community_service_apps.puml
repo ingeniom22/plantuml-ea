@@ -1,0 +1,11 @@
+@startuml community_service_apps
+:Sapawarga: as Sapawarga
+(Community engagement) as (Communityengagement)
+(Public service delivery) as (Publicservicedelivery)
+(Citizen feedback collection) as (Citizenfeedbackcollection)
+(Community information dissemination) as (Communityinformationdissemination)
+Sapawarga --> (Communityengagement)
+Sapawarga --> (Publicservicedelivery)
+Sapawarga --> (Citizenfeedbackcollection)
+Sapawarga --> (Communityinformationdissemination)
+@enduml

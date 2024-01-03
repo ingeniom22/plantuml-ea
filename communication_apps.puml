@@ -1,0 +1,31 @@
+@startuml communication_apps
+:Aplikasi e-Mail (Zimbra): as Aplikasie-Mail(Zimbra)
+:Website resmi Dinas Komunikasi dan Informatika: as WebsiteresmiDinasKomunikasidanInformatika
+:Forum terkait Covid-19: as ForumterkaitCovid-19
+:Website Resmi Pemerintah Provinsi Jawa Barat: as WebsiteResmiPemerintahProvinsiJawaBarat
+(Internal communication) as (Internalcommunication)
+(External communication) as (Externalcommunication)
+(Email management) as (Emailmanagement)
+(Forum discussion) as (Forumdiscussion)
+(Information dissemination) as (Informationdissemination)
+Aplikasie-Mail(Zimbra) --> (Internalcommunication)
+Aplikasie-Mail(Zimbra) --> (Externalcommunication)
+Aplikasie-Mail(Zimbra) --> (Emailmanagement)
+Aplikasie-Mail(Zimbra) --> (Forumdiscussion)
+Aplikasie-Mail(Zimbra) --> (Informationdissemination)
+WebsiteresmiDinasKomunikasidanInformatika --> (Internalcommunication)
+WebsiteresmiDinasKomunikasidanInformatika --> (Externalcommunication)
+WebsiteresmiDinasKomunikasidanInformatika --> (Emailmanagement)
+WebsiteresmiDinasKomunikasidanInformatika --> (Forumdiscussion)
+WebsiteresmiDinasKomunikasidanInformatika --> (Informationdissemination)
+ForumterkaitCovid-19 --> (Internalcommunication)
+ForumterkaitCovid-19 --> (Externalcommunication)
+ForumterkaitCovid-19 --> (Emailmanagement)
+ForumterkaitCovid-19 --> (Forumdiscussion)
+ForumterkaitCovid-19 --> (Informationdissemination)
+WebsiteResmiPemerintahProvinsiJawaBarat --> (Internalcommunication)
+WebsiteResmiPemerintahProvinsiJawaBarat --> (Externalcommunication)
+WebsiteResmiPemerintahProvinsiJawaBarat --> (Emailmanagement)
+WebsiteResmiPemerintahProvinsiJawaBarat --> (Forumdiscussion)
+WebsiteResmiPemerintahProvinsiJawaBarat --> (Informationdissemination)
+@enduml

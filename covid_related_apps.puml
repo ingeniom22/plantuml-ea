@@ -1,0 +1,31 @@
+@startuml covid_related_apps
+:Sistem Test masif Pikobar: as SistemTestmasifPikobar
+:Web Bansos Pikobar: as WebBansosPikobar
+:Web site Pikobar: as WebsitePikobar
+:Admin Test Masif Pikobar: as AdminTestMasifPikobar
+:Sistem Online Penerima Bantuan Bansos: as SistemOnlinePenerimaBantuanBansos
+(Covid-19 testing) as (Covid-19testing)
+(Covid-19 case tracking) as (Covid-19casetracking)
+(Covid-19 information dissemination) as (Covid-19informationdissemination)
+(Social assistance distribution during Covid-19) as (SocialassistancedistributionduringCovid-19)
+SistemTestmasifPikobar --> (Covid-19testing)
+SistemTestmasifPikobar --> (Covid-19casetracking)
+SistemTestmasifPikobar --> (Covid-19informationdissemination)
+SistemTestmasifPikobar --> (SocialassistancedistributionduringCovid-19)
+WebBansosPikobar --> (Covid-19testing)
+WebBansosPikobar --> (Covid-19casetracking)
+WebBansosPikobar --> (Covid-19informationdissemination)
+WebBansosPikobar --> (SocialassistancedistributionduringCovid-19)
+WebsitePikobar --> (Covid-19testing)
+WebsitePikobar --> (Covid-19casetracking)
+WebsitePikobar --> (Covid-19informationdissemination)
+WebsitePikobar --> (SocialassistancedistributionduringCovid-19)
+AdminTestMasifPikobar --> (Covid-19testing)
+AdminTestMasifPikobar --> (Covid-19casetracking)
+AdminTestMasifPikobar --> (Covid-19informationdissemination)
+AdminTestMasifPikobar --> (SocialassistancedistributionduringCovid-19)
+SistemOnlinePenerimaBantuanBansos --> (Covid-19testing)
+SistemOnlinePenerimaBantuanBansos --> (Covid-19casetracking)
+SistemOnlinePenerimaBantuanBansos --> (Covid-19informationdissemination)
+SistemOnlinePenerimaBantuanBansos --> (SocialassistancedistributionduringCovid-19)
+@enduml
