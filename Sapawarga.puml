@@ -1,0 +1,13 @@
+@startuml Sapawarga
+:User: as User
+rectangle Sapawarga_usecases {
+(Community engagement) as (Communityengagement)
+(Public service delivery) as (Publicservicedelivery)
+(Citizen feedback collection) as (Citizenfeedbackcollection)
+(Community information dissemination) as (Communityinformationdissemination)
+}}
+User --> (Communityengagement)
+User --> (Publicservicedelivery)
+User --> (Citizenfeedbackcollection)
+User --> (Communityinformationdissemination)
+@enduml
