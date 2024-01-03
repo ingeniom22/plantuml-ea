@@ -37,13 +37,14 @@ apps_ops_mappings = {
 }
 
 for apps_category, ops in apps_ops_mappings.items():
-    with open(f"{apps_category}.puml", "w") as file:
-        file.write(f"@startuml {apps_category}\n")
-        for app in eval(apps_category):
-            file.write(f":{app}: as {app.replace(' ', '')}\n")
-        for op in ops:
-            file.write(f"({op}) as ({op.replace(' ', '')})\n")
-        for app in eval(apps_category):
+    for app in eval(apps_category):
+        with open(f"usecases_puml/{app.replace(' ', '_')}.puml", "w") as file:
+            file.write(f"@startuml {app}\n")
+            file.write(":User: as User\n")
+            file.write(f"rectangle {app.replace(' ', '_')}_usecases {{\n")
             for op in ops:
-                file.write(f"{app.replace(' ', '')} --> ({op.replace(' ', '')})\n")
-        file.write("@enduml\n")
+                file.write(f"({op}) as ({op.replace(' ', '')})\n")
+            file.write("}\n")
+            for op in ops:
+                file.write(f"User --> ({op.replace(' ', '')})\n")
+            file.write("@enduml\n")
